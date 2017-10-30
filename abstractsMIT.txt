@@ -1,0 +1,777 @@
+
+Abstract: The automation of posterior inference in Bayesian data analysis has enabled
+experts and nonexperts alike to use more sophisticated models, engage in faster
+exploratory modeling and analysis, and ensure experimental reproducibility.
+However, standard automated posterior inference algorithms are not tractable at
+the scale of massive modern datasets, and modifications to make them so are
+typically model-specific, require expert tuning, and can break theoretical
+guarantees on inferential quality. Building on the Bayesian coresets framework,
+this work instead takes advantage of data redundancy to shrink the dataset
+itself as a preprocessing step, providing fully-automated, scalable Bayesian
+inference with theoretical guarantees. We begin with an intuitive reformulation
+of Bayesian coreset construction as sparse vector sum approximation, and
+demonstrate that its automation and performance-based shortcomings arise from
+the use of the supremum norm. To address these shortcomings we develop Hilbert
+coresets, i.e., Bayesian coresets constructed under a norm induced by an
+inner-product on the log-likelihood function space. We propose two Hilbert
+coreset construction algorithms---one based on importance sampling, and one
+based on the Frank-Wolfe algorithm---along with theoretical guarantees on
+approximation quality as a function of coreset size. Since the exact
+computation of the proposed inner-products is model-specific, we automate the
+construction with a random finite-dimensional projection of the log-likelihood
+functions. The resulting automated coreset construction algorithm is simple to
+implement, and experiments on a variety of models with real and synthetic
+datasets show that it provides high-quality posterior approximations and a
+significant reduction in the computational cost of inference.
+
+Abstract: Generalized linear models (GLMs) -- such as logistic regression, Poisson
+regression, and robust regression -- provide interpretable models for diverse
+data types. Probabilistic approaches, particularly Bayesian ones, allow
+coherent estimates of uncertainty, incorporation of prior information, and
+sharing of power across experiments via hierarchical models. In practice,
+however, the approximate Bayesian methods necessary for inference have either
+failed to scale to large data sets or failed to provide theoretical guarantees
+on the quality of inference. We propose a new approach based on constructing
+polynomial approximate sufficient statistics for GLMs (PASS-GLM). We
+demonstrate that our method admits a simple algorithm as well as trivial
+streaming and distributed extensions that do not compound error across
+computations. We provide theoretical guarantees on the quality of point (MAP)
+estimates, the approximate posterior, and posterior mean and uncertainty
+estimates. We validate our approach empirically in the case of logistic
+regression using a quadratic approximation and show competitive performance
+with stochastic gradient descent, MCMC, and the Laplace approximation in terms
+of speed and multiple measures of accuracy -- including on an advertising data
+set with 40 million data points and 20,000 covariates.
+
+Abstract: Variational Bayes (VB) is an approximate Bayesian posterior inference
+technique that is increasingly popular due to its fast runtimes on large-scale
+datasets. However, even when VB provides accurate posterior means for certain
+parameters, it often mis-estimates variances and covariances. Furthermore,
+prior robustness measures have remained undeveloped for VB. By deriving a
+simple formula for the effect of infinitesimal model perturbations on VB
+posterior means, we provide both improved covariance estimates and local
+robustness measures for VB, thus greatly expanding the practical usefulness of
+VB posterior approximations. The estimates for VB posterior covariances rely on
+a result from the classical Bayesian robustness literature relating derivatives
+of posterior expectations to posterior covariances. Our key assumption is that
+the VB approximation provides good estimates of a select subset of posterior
+means -- an assumption that has been shown to hold in many practical settings.
+In our experiments, we demonstrate that our methods are simple, general, and
+fast, providing accurate posterior uncertainty estimates and robustness
+measures with runtimes that can be an order of magnitude smaller than MCMC.
+
+Abstract: Many popular network models rely on the assumption of (vertex)
+exchangeability, in which the distribution of the graph is invariant to
+relabelings of the vertices. However, the Aldous-Hoover theorem guarantees that
+these graphs are dense or empty with probability one, whereas many real-world
+graphs are sparse. We present an alternative notion of exchangeability for
+random graphs, which we call edge exchangeability, in which the distribution of
+a graph sequence is invariant to the order of the edges. We demonstrate that
+edge-exchangeable models, unlike models that are traditionally vertex
+exchangeable, can exhibit sparsity. To do so, we outline a general framework
+for graph generative models; by contrast to the pioneering work of Caron and
+Fox (2015), models within our framework are stationary across steps of the
+graph sequence. In particular, our model grows the graph by instantiating more
+latent atoms of a single random measure as the dataset size increases, rather
+than adding new atoms to the measure.
+
+Abstract: In Bayesian analysis, the posterior follows from the data and a choice of a
+prior and a likelihood. One hopes that the posterior is robust to reasonable
+variation in the choice of prior, since this choice is made by the modeler and
+is often somewhat subjective. A different, equally subjectively plausible
+choice of prior may result in a substantially different posterior, and so
+different conclusions drawn from the data. Were this to be the case, our
+conclusions would not be robust to the choice of prior. To determine whether
+our model is robust, we must quantify how sensitive our posterior is to
+perturbations of our prior. Despite the importance of the problem and a
+considerable body of literature, generic, easy-to-use methods to quantify
+Bayesian robustness are still lacking.
+Abstract In this paper, we demonstrate that powerful measures of robustness
+can be easily calculated from Variational Bayes (VB) approximate posteriors. We
+begin with local robustness, which measures the effect of infinitesimal changes
+to the prior on a posterior mean of interest. In particular, we show that the
+influence function of Gustafson (2012) has a simple, easy-to-calculate closed
+form expression for VB approximations. We then demonstrate how local robustness
+measures can be inadequate for non-local prior changes, such as replacing one
+prior entirely with another. We propose a simple approximate non-local
+robustness measure and demonstrate its effectiveness on a simulated data set.
+
+Abstract: Variational inference (VI) provides fast approximations of a Bayesian
+posterior in part because it formulates posterior approximation as an
+optimization problem: to find the closest distribution to the exact posterior
+over some family of distributions. For practical reasons, the family of
+distributions in VI is usually constrained so that it does not include the
+exact posterior, even as a limit point. Thus, no matter how long VI is run, the
+resulting approximation will not approach the exact posterior. We propose to
+instead consider a more flexible approximating family consisting of all
+possible finite mixtures of a parametric base distribution (e.g., Gaussian).
+For efficient inference, we borrow ideas from gradient boosting to develop an
+algorithm we call boosting variational inference (BVI). BVI iteratively
+improves the current approximation by mixing it with a new component from the
+base distribution family and thereby yields progressively more accurate
+posterior approximations as more computing time is spent. Unlike a number of
+common VI variants including mean-field VI, BVI is able to capture
+multimodality, general posterior covariance, and nonstandard posterior shapes.
+
+Abstract: Clustering requires placing data into mutually exclusive groups, while
+feature allocations allow each datum to exhibit binary membership in multiple
+groups. But often, data points can not only belong to multiple groups but have
+different levels of belonging in each group. We refer to the corresponding
+relaxation of these combinatorial structures as a "trait allocation." The
+exchangeable partition probability function (EPPF) allows for practical
+inference in clustering models, and the Kingman paintbox provides a
+representation for clustering that allows us to study all exchangeable
+clustering models at once. We provide the analogous exchangeable trait
+probability function (ETPF) and paintbox representation for trait allocations,
+along with a characterization of all trait allocations with an ETPF. Our proofs
+avoid the unnecessary auxiliary randomness of previous specialized
+constructions and---unlike previous feature allocation
+characterizations---fully capture single-occurrence "dust" groups. We further
+introduce a novel constrained version of the ETPF that we use to establish the
+first direct connection between the probability functions for clustering,
+feature allocations, and trait allocations. As an application of our general
+theory, we characterize the distribution of all edge-exchangeable graphs, a
+recently-developed model that captures realistic sparse graph sequences.
+
+Abstract: Bayesian hierarchical models are increasing popular in economics. When using
+hierarchical models, it is useful not only to calculate posterior expectations,
+but also to measure the robustness of these expectations to reasonable
+alternative prior choices. We use variational Bayes and linear response methods
+to provide fast, accurate posterior means and robustness measures with an
+application to measuring the effectiveness of microcredit in the developing
+world.
+
+Abstract: The use of Bayesian methods in large-scale data settings is attractive
+because of the rich hierarchical models, uncertainty quantification, and prior
+specification they provide. Standard Bayesian inference algorithms are
+computationally expensive, however, making their direct application to large
+datasets difficult or infeasible. Recent work on scaling Bayesian inference has
+focused on modifying the underlying algorithms to, for example, use only a
+random data subsample at each iteration. We leverage the insight that data is
+often redundant to instead obtain a weighted subset of the data (called a
+coreset) that is much smaller than the original dataset. We can then use this
+small coreset in any number of existing posterior inference algorithms without
+modification. In this paper, we develop an efficient coreset construction
+algorithm for Bayesian logistic regression models. We provide theoretical
+guarantees on the size and approximation quality of the coreset -- both for
+fixed, known datasets, and in expectation for a wide class of data generative
+models. Crucially, the proposed approach also permits efficient construction of
+the coreset in both streaming and parallel settings, with minimal additional
+effort. We demonstrate the efficacy of our approach on a number of synthetic
+and real-world datasets, and find that, in practice, the size of the coreset is
+independent of the original dataset size. Furthermore, constructing the coreset
+takes a negligible amount of time compared to that required to run MCMC on it.
+
+Abstract: Network data appear in a number of applications, such as online social
+networks and biological networks, and there is growing interest in both
+developing models for networks as well as studying the properties of such data.
+Since individual network datasets continue to grow in size, it is necessary to
+develop models that accurately represent the real-life scaling properties of
+networks. One behavior of interest is having a power law in the degree
+distribution. However, other types of power laws that have been observed
+empirically and considered for applications such as clustering and feature
+allocation models have not been studied as frequently in models for graph data.
+In this paper, we enumerate desirable asymptotic behavior that may be of
+interest for modeling graph data, including sparsity and several types of power
+laws. We outline a general framework for graph generative models using
+completely random measures; by contrast to the pioneering work of Caron and Fox
+(2015), we consider instantiating more of the existing atoms of the random
+measure as the dataset size increases rather than adding new atoms to the
+measure. We see that these two models can be complementary; they respectively
+yield interpretations as (1) time passing among existing members of a network
+and (2) new individuals joining a network. We detail a particular instance of
+this framework and show simulated results that suggest this model exhibits some
+desirable asymptotic power-law behavior.
+
+Abstract: A known failing of many popular random graph models is that the Aldous-Hoover
+Theorem guarantees these graphs are dense with probability one; that is, the
+number of edges grows quadratically with the number of nodes. This behavior is
+considered unrealistic in observed graphs. We define a notion of edge
+exchangeability for random graphs in contrast to the established notion of
+infinite exchangeability for random graphs --- which has traditionally relied
+on exchangeability of nodes (rather than edges) in a graph. We show that,
+unlike node exchangeability, edge exchangeability encompasses models that are
+known to provide a projective sequence of random graphs that circumvent the
+Aldous-Hoover Theorem and exhibit sparsity, i.e., sub-quadratic growth of the
+number of edges with the number of nodes. We show how edge-exchangeability of
+graphs relates naturally to existing notions of exchangeability from clustering
+(a.k.a. partitions) and other familiar combinatorial structures.
+
+Abstract: Completely random measures (CRMs) and their normalizations are a rich source
+of Bayesian nonparametric priors. Examples include the beta, gamma, and
+Dirichlet processes. In this paper we detail two major classes of sequential
+CRM representations---series representations and superposition
+representations---within which we organize both novel and existing sequential
+representations that can be used for simulation and posterior inference. These
+two classes and their constituent representations subsume existing ones that
+have previously been developed in an ad hoc manner for specific processes.
+Since a complete infinite-dimensional CRM cannot be used explicitly for
+computation, sequential representations are often truncated for tractability.
+We provide truncation error analyses for each type of sequential
+representation, as well as their normalized versions, thereby generalizing and
+improving upon existing truncation error bounds in the literature. We analyze
+the computational complexity of the sequential representations, which in
+conjunction with our error bounds allows us to directly compare representations
+and discuss their relative efficiency. We include numerous applications of our
+theoretical results to commonly-used (normalized) CRMs, demonstrating that our
+results enable a straightforward representation and analysis of CRMs that has
+not previously been available in a Bayesian nonparametric context.
+
+Abstract: In Bayesian analysis, the posterior follows from the data and a choice of a
+prior and a likelihood. One hopes that the posterior is robust to reasonable
+variation in the choice of prior and likelihood, since this choice is made by
+the modeler and is necessarily somewhat subjective. Despite the fundamental
+importance of the problem and a considerable body of literature, the tools of
+robust Bayes are not commonly used in practice. This is in large part due to
+the difficulty of calculating robustness measures from MCMC draws. Although
+methods for computing robustness measures from MCMC draws exist, they lack
+generality and often require additional coding or computation.
+In contrast to MCMC, variational Bayes (VB) techniques are readily amenable
+to robustness analysis. The derivative of a posterior expectation with respect
+to a prior or data perturbation is a measure of local robustness to the prior
+or likelihood. Because VB casts posterior inference as an optimization problem,
+its methodology is built on the ability to calculate derivatives of posterior
+quantities with respect to model parameters, even in very complex models. In
+the present work, we develop local prior robustness measures for mean-field
+variational Bayes(MFVB), a VB technique which imposes a particular
+factorization assumption on the variational posterior approximation. We start
+by outlining existing local prior measures of robustness. Next, we use these
+results to derive closed-form measures of the sensitivity of mean-field
+variational posterior approximation to prior specification. We demonstrate our
+method on a meta-analysis of randomized controlled interventions in access to
+microcredit in developing countries.
+
+Abstract: This article is a translation of Bruno de Finetti's paper "Funzione
+Caratteristica di un fenomeno aleatorio" which appeared in Atti del Congresso
+Internazionale dei Matematici, Bologna 3-10 Settembre 1928, Tomo VI, pp.
+179-190, originally published by Nicola Zanichelli Editore S.p.A. The
+translation was made as close as possible to the original in form and style,
+except for apparent mistakes found in the original document, which were
+corrected and are mentioned as footnotes. Most of these were resolved by
+comparing against a longer version of this work by de Finetti, published
+shortly after this one under the same titlea. The interested reader is highly
+encouraged to consult this other version for a more detailed treatment of the
+topics covered here. Footnotes regarding the translation are labeled with
+letters to distinguish them from de Finetti's original footnotes.
+
+Abstract: Mean field variational Bayes (MFVB) is a popular posterior approximation
+method due to its fast runtime on large-scale data sets. However, it is well
+known that a major failing of MFVB is that it underestimates the uncertainty of
+model variables (sometimes severely) and provides no information about model
+variable covariance.
+We generalize linear response methods from statistical physics to deliver
+accurate uncertainty estimates for model variables---both for individual
+variables and coherently across variables. We call our method linear response
+variational Bayes (LRVB). When the MFVB posterior approximation is in the
+exponential family, LRVB has a simple, analytic form, even for non-conjugate
+models. Indeed, we make no assumptions about the form of the true posterior. We
+demonstrate the accuracy and scalability of our method on a range of models for
+both simulated and real data.
+
+Abstract: Mean field variational Bayes (MFVB) is a popular posterior approximation
+method due to its fast runtime on large-scale data sets. However, it is well
+known that a major failing of MFVB is that it underestimates the uncertainty of
+model variables (sometimes severely) and provides no information about model
+variable covariance. We develop a fast, general methodology for exponential
+families that augments MFVB to deliver accurate uncertainty estimates for model
+variables -- both for individual variables and coherently across variables.
+MFVB for exponential families defines a fixed-point equation in the means of
+the approximating posterior, and our approach yields a covariance estimate by
+perturbing this fixed point. Inspired by linear response theory, we call our
+method linear response variational Bayes (LRVB). We also show how LRVB can be
+used to quickly calculate a measure of the influence of individual data points
+on parameter point estimates. We demonstrate the accuracy and scalability of
+our method by learning Gaussian mixture models for both simulated and real
+data.
+
+Abstract: Mean Field Variational Bayes (MFVB) is a popular posterior approximation
+method due to its fast runtime on large-scale data sets. However, it is well
+known that a major failing of MFVB is its (sometimes severe) underestimates of
+the uncertainty of model variables and lack of information about model variable
+covariance. We develop a fast, general methodology for exponential families
+that augments MFVB to deliver accurate uncertainty estimates for model
+variables -- both for individual variables and coherently across variables.
+MFVB for exponential families defines a fixed-point equation in the means of
+the approximating posterior, and our approach yields a covariance estimate by
+perturbing this fixed point. Inspired by linear response theory, we call our
+method linear response variational Bayes (LRVB). We demonstrate the accuracy of
+our method on simulated data sets.
+
+Abstract: We demonstrate how to calculate posteriors for general CRM-based priors and
+likelihoods for Bayesian nonparametric models. We further show how to represent
+Bayesian nonparametric priors as a sequence of finite draws using a
+size-biasing approach---and how to represent full Bayesian nonparametric models
+via finite marginals. Motivated by conjugate priors based on exponential family
+representations of likelihoods, we introduce a notion of exponential families
+for CRMs, which we call exponential CRMs. This construction allows us to
+specify automatic Bayesian nonparametric conjugate priors for exponential CRM
+likelihoods. We demonstrate that our exponential CRMs allow particularly
+straightforward recipes for size-biased and marginal representations of
+Bayesian nonparametric models. Along the way, we prove that the gamma process
+is a conjugate prior for the Poisson likelihood process and the beta prime
+process is a conjugate prior for a process we call the odds Bernoulli process.
+We deliver a size-biased representation of the gamma process and a marginal
+representation of the gamma process coupled with a Poisson likelihood process.
+
+Abstract: Bayesian entity resolution merges together multiple, noisy databases and
+returns the minimal collection of unique individuals represented, together with
+their true, latent record values. Bayesian methods allow flexible generative
+models that share power across databases as well as principled quantification
+of uncertainty for queries of the final, resolved database. However, existing
+Bayesian methods for entity resolution use Markov monte Carlo method (MCMC)
+approximations and are too slow to run on modern databases containing millions
+or billions of records. Instead, we propose applying variational approximations
+to allow scalable Bayesian inference in these models. We derive a
+coordinate-ascent approximation for mean-field variational Bayes, qualitatively
+compare our algorithm to existing methods, note unique challenges for inference
+that arise from the expected distribution of cluster sizes in entity
+resolution, and discuss directions for future work in this domain.
+
+Abstract: Research on distributed machine learning algorithms has focused primarily on
+one of two extremes - algorithms that obey strict concurrency constraints or
+algorithms that obey few or no such constraints. We consider an intermediate
+alternative in which algorithms optimistically assume that conflicts are
+unlikely and if conflicts do arise a conflict-resolution protocol is invoked.
+We view this "optimistic concurrency control" paradigm as particularly
+appropriate for large-scale machine learning algorithms, particularly in the
+unsupervised setting. We demonstrate our approach in three problem areas:
+clustering, feature learning and online facility location. We evaluate our
+methods via large-scale experiments in a cluster computing environment.
+
+Abstract: We present SDA-Bayes, a framework for (S)treaming, (D)istributed,
+(A)synchronous computation of a Bayesian posterior. The framework makes
+streaming updates to the estimated posterior according to a user-specified
+approximation batch primitive. We demonstrate the usefulness of our framework,
+with variational Bayes (VB) as the primitive, by fitting the latent Dirichlet
+allocation model to two large-scale document collections. We demonstrate the
+advantages of our algorithm over stochastic variational inference (SVI) by
+comparing the two after a single pass through a known amount of data---a case
+where SVI may be applied---and in the streaming setting, where SVI does not
+apply.
+
+Abstract: The problem of inferring a clustering of a data set has been the subject of
+much research in Bayesian analysis, and there currently exists a solid
+mathematical foundation for Bayesian approaches to clustering. In particular,
+the class of probability distributions over partitions of a data set has been
+characterized in a number of ways, including via exchangeable partition
+probability functions (EPPFs) and the Kingman paintbox. Here, we develop a
+generalization of the clustering problem, called feature allocation, where we
+allow each data point to belong to an arbitrary, non-negative integer number of
+groups, now called features or topics. We define and study an "exchangeable
+feature probability function" (EFPF)---analogous to the EPPF in the clustering
+setting---for certain types of feature models. Moreover, we introduce a
+"feature paintbox" characterization---analogous to the Kingman paintbox for
+clustering---of the class of exchangeable feature models. We provide a further
+characterization of the subclass of feature allocations that have EFPF
+representations.
+
+Abstract: The classical mixture of Gaussians model is related to K-means via
+small-variance asymptotics: as the covariances of the Gaussians tend to zero,
+the negative log-likelihood of the mixture of Gaussians model approaches the
+K-means objective, and the EM algorithm approaches the K-means algorithm. Kulis
+& Jordan (2012) used this observation to obtain a novel K-means-like algorithm
+from a Gibbs sampler for the Dirichlet process (DP) mixture. We instead
+consider applying small-variance asymptotics directly to the posterior in
+Bayesian nonparametric models. This framework is independent of any specific
+Bayesian inference algorithm, and it has the major advantage that it
+generalizes immediately to a range of models beyond the DP mixture. To
+illustrate, we apply our framework to the feature learning setting, where the
+beta process and Indian buffet process provide an appropriate Bayesian
+nonparametric prior. We obtain a novel objective function that goes beyond
+clustering to learn (and penalize new) groupings for which we relax the mutual
+exclusivity and exhaustivity assumptions of clustering. We demonstrate several
+other algorithms, all of which are scalable and simple to implement. Empirical
+results demonstrate the benefits of the new framework.
+
+Abstract: We develop algorithms for performing semiparametric regression analysis in
+real time, with data processed as it is collected and made immediately
+available via modern telecommunications technologies. Our definition of
+semiparametric regression is quite broad and includes, as special cases,
+generalized linear mixed models, generalized additive models, geostatistical
+models, wavelet nonparametric regression models and their various combinations.
+Fast updating of regression fits is achieved by couching semiparametric
+regression into a Bayesian hierarchical model or, equivalently, graphical model
+framework and employing online mean field variational ideas. An internet site
+attached to this article, realtime-semiparametric-regression.net, illustrates
+the methodology for continually arriving stock market, real estate and airline
+data. Flexible real-time analyses, based on increasingly ubiquitous streaming
+data sources stand to benefit.
+
+Abstract: One of the focal points of the modern literature on Bayesian nonparametrics
+has been the problem of clustering, or partitioning, where each data point is
+modeled as being associated with one and only one of some collection of groups
+called clusters or partition blocks. Underlying these Bayesian nonparametric
+models are a set of interrelated stochastic processes, most notably the
+Dirichlet process and the Chinese restaurant process. In this paper we provide
+a formal development of an analogous problem, called feature modeling, for
+associating data points with arbitrary nonnegative integer numbers of groups,
+now called features or topics. We review the existing combinatorial stochastic
+process representations for the clustering problem and develop analogous
+representations for the feature modeling problem. These representations include
+the beta process and the Indian buffet process as well as new representations
+that provide insight into the connections between these processes. We thereby
+bring the same level of completeness to the treatment of Bayesian nonparametric
+feature modeling that has previously been achieved for Bayesian nonparametric
+clustering.
+
+Abstract: We propose a framework for adversarial training that relies on a sample
+rather than a single sample point as the fundamental unit of discrimination.
+Inspired by discrepancy measures and two-sample tests between probability
+distributions, we propose two such distributional adversaries that operate and
+predict on samples, and show how they can be easily implemented on top of
+existing models. Various experimental results show that generators trained with
+our distributional adversaries are much more stable and are remarkably less
+prone to mode collapse than traditional models trained with pointwise
+prediction discriminators. The application of our framework to domain
+adaptation also results in considerable improvement over recent
+state-of-the-art.
+
+Abstract: The need for real time analysis of rapidly producing data streams (e.g.,
+video and image streams) motivated the design of streaming algorithms that can
+efficiently extract and summarize useful information from massive data "on the
+fly". Such problems can often be reduced to maximizing a submodular set
+function subject to various constraints. While efficient streaming methods have
+been recently developed for monotone submodular maximization, in a wide range
+of applications, such as video summarization, the underlying utility function
+is non-monotone, and there are often various constraints imposed on the
+optimization problem to consider privacy or personalization. We develop the
+first efficient single pass streaming algorithm, Streaming Local Search, that
+for any streaming monotone submodular maximization algorithm with approximation
+guarantee $\alpha$ under a collection of independence systems $\mathcal{I}$,
+provides a constant $1/\big(1+2/\sqrt{\alpha}+1/\alpha
++2d(1+\sqrt{\alpha})\big)$ approximation guarantee for maximizing a
+non-monotone submodular function under the intersection of $\mathcal{I}$ and
+$d$ knapsack constraints. Our experiments show that for video summarization,
+our method runs more than 1700 times faster than previous work, while
+maintaining practically the same performance.
+
+Abstract: Bayesian Optimization (BO) has been shown to be a very effective paradigm for
+tackling hard black-box and non-convex optimization problems encountered in
+Machine Learning. Despite these successes, the computational complexity of the
+underlying function approximation has restricted the use of BO to problems that
+can be handled with less than a few thousand function evaluations. Harder
+problems like those involving functions operating in very high dimensional
+spaces may require hundreds of thousands or millions of evaluations or more and
+become computationally intractable to handle using standard Bayesian
+Optimization methods. In this paper, we propose Ensemble Bayesian Optimization
+(EBO) to overcome this problem. Unlike conventional BO methods that operate on
+a single posterior GP model, EBO works with an ensemble of posterior GP models.
+Further, we represent each GP model using tile coding random features and an
+additive function structure. Our approach generates speedups by parallelizing
+the time consuming hyper-parameter posterior inference and functional
+evaluations on hundreds of cores and aggregating the models in every iteration
+of BO. Our extensive experimental evaluation shows that EBO can speed up the
+posterior inference between 2-3 orders of magnitude (400 times in one
+experiment) compared to the state-of-the-art by putting data into Mondrian bins
+without sacrificing the sample quality. We demonstrate the ability of EBO to
+handle sample-intensive hard optimization problems by applying it to a rover
+navigation problem with tens of thousands of observations.
+
+Abstract: Efficiently aggregating data from different sources is a challenging problem,
+particularly when samples from each source are distributed differently. These
+differences can be inherent to the inference task or present for other reasons:
+sensors in a sensor network may be placed far apart, affecting their individual
+measurements. Conversely, it is computationally advantageous to split Bayesian
+inference tasks across subsets of data, but data need not be identically
+distributed across subsets. One principled way to fuse probability
+distributions is via the lens of optimal transport: the Wasserstein barycenter
+is a single distribution that summarizes a collection of input measures while
+respecting their geometry. However, computing the barycenter scales poorly and
+requires discretization of all input distributions and the barycenter itself.
+Improving on this situation, we present a scalable, communication-efficient,
+parallel algorithm for computing the Wasserstein barycenter of arbitrary
+distributions. Our algorithm can operate directly on continuous input
+distributions and is optimized for streaming data. Our method is even robust to
+nonstationary input distributions and produces a barycenter estimate that
+tracks the input measures over time. The algorithm is semi-discrete, needing to
+discretize only the barycenter estimate. To the best of our knowledge, we also
+provide the first bounds on the quality of the approximate barycenter as the
+discretization becomes finer. Finally, we demonstrate the practical
+effectiveness of our method, both in tracking moving distributions on a sphere,
+as well as in a large-scale Bayesian inference task.
+
+Abstract: We consider the problem of far-field sensing by means of a sensor array.
+Traditional array geometry design techniques are agnostic to prior information
+about the far-field scene. However, in many applications such priors are
+available and may be utilized to design more efficient array topologies. We
+formulate the problem of array geometry design with scene prior as one of
+finding a sampling configuration that enables efficient inference, which turns
+out to be a combinatorial optimization problem. While generic combinatorial
+optimization problems are NP-hard and resist efficient solvers, we show how for
+array design problems the theory of submodular optimization may be utilized to
+obtain efficient algorithms that are guaranteed to achieve solutions within a
+constant approximation factor from the optimum. We leverage the connection
+between array design problems and submodular optimization and port several
+results of interest. We demonstrate efficient methods for designing arrays with
+constraints on the sensing aperture, as well as arrays respecting combinatorial
+placement constraints. This novel connection between array design and
+submodularity suggests the possibility for utilizing other insights and
+techniques from the growing body of literature on submodular optimization in
+the field of array design.
+
+Abstract: We study dual volume sampling, a method for selecting k columns from an n*m
+short and wide matrix (n<=k<=m) such that the probability of selection is
+proportional to the volume spanned by the rows of the induced submatrix. This
+method was proposed by Avron and Boutsidis (2013), who showed it to be a
+promising method for column subset selection and its multiple applications.
+However, its wider adoption has been hampered by the lack of polynomial time
+sampling algorithms. We remove this hindrance by developing an exact
+(randomized) polynomial time sampling algorithm as well as its derandomization.
+Thereafter, we study dual volume sampling via the theory of real-stable
+polynomials and prove that its distribution satisfies the "Strong Rayleigh"
+property. This result has remarkable consequences, especially because it
+implies a provably fast-mixing Markov chain sampler that makes dual volume
+sampling much more attractive to practitioners. This sampler is closely related
+to classical algorithms for popular experimental design methods that are to
+date lacking theoretical analysis but are known to empirically work well.
+
+Abstract: Optimization of high-dimensional black-box functions is an extremely
+challenging problem. While Bayesian optimization has emerged as a popular
+approach for optimizing black-box functions, its applicability has been limited
+to low-dimensional problems due to its computational and statistical challenges
+arising from high-dimensional settings. In this paper, we propose to tackle
+these challenges by (1) assuming a latent additive structure in the function
+and inferring it properly for more efficient and effective BO, and (2)
+performing multiple evaluations in parallel to reduce the number of iterations
+required by the method. Our novel approach learns the latent structure with
+Gibbs sampling and constructs batched queries using determinantal point
+processes. Experimental validations on both synthetic and real-world functions
+demonstrate that the proposed method significantly outperforms existing
+state-of-the-art approaches.
+
+Abstract: Entropy Search (ES) and Predictive Entropy Search (PES) are popular and
+empirically successful Bayesian Optimization techniques. Both rely on a
+compelling information-theoretic motivation, and maximize the information
+gained about the $\arg\max$ of the unknown function. Yet, both are plagued by
+expensive computation, e.g., for estimating entropy. We propose a new
+criterion, Max-value Entropy Search (MES), that instead uses the information
+about the maximum value. We observe that MES maintains or improves the good
+empirical performance of ES/PES, while tremendously lightening the
+computational burden. In particular, MES is much more robust to the number of
+samples used for computing entropy, and hence more efficient. We show relations
+of MES to other BO methods, and establish a regret bound. Empirical evaluations
+on a variety of tasks demonstrate the good performance of MES.
+
+Abstract: The optimal allocation of resources for maximizing influence, spread of
+information or coverage, has gained attention in the past years, in particular
+in machine learning and data mining. But in applications, the parameters of the
+problem are rarely known exactly, and using wrong parameters can lead to
+undesirable outcomes. We hence revisit a continuous version of the Budget
+Allocation or Bipartite Influence Maximization problem introduced by Alon et
+al. (2012) from a robust optimization perspective, where an adversary may
+choose the least favorable parameters within a confidence set. The resulting
+problem is a nonconvex-concave saddle point problem (or game). We show that
+this nonconvex problem can be solved exactly by leveraging connections to
+continuous submodular functions, and by solving a constrained submodular
+minimization problem. Although constrained submodular minimization is hard in
+general, here, we establish conditions under which such a problem can be solved
+to arbitrary precision $\epsilon$.
+
+Abstract: Learning the representation and the similarity metric in an end-to-end
+fashion with deep networks have demonstrated outstanding results for clustering
+and retrieval. However, these recent approaches still suffer from the
+performance degradation stemming from the local metric training procedure which
+is unaware of the global structure of the embedding space.
+We propose a global metric learning scheme for optimizing the deep metric
+embedding with the learnable clustering function and the clustering metric
+(NMI) in a novel structured prediction framework.
+Our experiments on CUB200-2011, Cars196, and Stanford online products
+datasets show state of the art performance both on the clustering and retrieval
+tasks measured in the NMI and Recall@K evaluation metrics.
+
+Abstract: We study probability measures induced by set functions with constraints. Such
+measures arise in a variety of real-world settings, where prior knowledge,
+resource limitations, or other pragmatic considerations impose constraints. We
+consider the task of rapidly sampling from such constrained measures, and
+develop fast Markov chain samplers for them. Our first main result is for MCMC
+sampling from Strongly Rayleigh (SR) measures, for which we present sharp
+polynomial bounds on the mixing time. As a corollary, this result yields a fast
+mixing sampler for Determinantal Point Processes (DPPs), yielding (to our
+knowledge) the first provably fast MCMC sampler for DPPs since their inception
+over four decades ago. Beyond SR measures, we develop MCMC samplers for
+probabilistic models with hard constraints and identify sufficient conditions
+under which their chains mix rapidly. We illustrate our claims by empirically
+verifying the dependence of mixing times on the key factors governing our
+theoretical bounds.
+
+Abstract: We introduce a framework for model learning and planning in stochastic
+domains with continuous state and action spaces and non-Gaussian transition
+models. It is efficient because (1) local models are estimated only when the
+planner requires them; (2) the planner focuses on the most relevant states to
+the current planning problem; and (3) the planner focuses on the most
+informative and/or high-value actions. Our theoretical analysis shows the
+validity and asymptotic optimality of the proposed approach. Empirically, we
+demonstrate the effectiveness of our algorithm on a simulated multi-modal
+pushing problem.
+
+Abstract: In this note we consider sampling from (non-homogeneous) strongly Rayleigh
+probability measures. As an important corollary, we obtain a fast mixing Markov
+Chain sampler for Determinantal Point Processes.
+
+Abstract: The Nystr\"om method has long been popular for scaling up kernel methods. Its
+theoretical guarantees and empirical performance rely critically on the quality
+of the landmarks selected. We study landmark selection for Nystr\"om using
+Determinantal Point Processes (DPPs), discrete probability models that allow
+tractable generation of diverse samples. We prove that landmarks selected via
+DPPs guarantee bounds on approximation errors; subsequently, we analyze
+implications for kernel ridge regression. Contrary to prior reservations due to
+cubic complexity of DPPsampling, we show that (under certain conditions) Markov
+chain DPP sampling requires only linear time in the size of the data. We
+present several empirical results that support our theoretical analysis, and
+demonstrate the superior performance of DPP-based landmark selection compared
+with existing approaches.
+
+Abstract: We present a framework for accelerating a spectrum of machine learning
+algorithms that require computation of bilinear inverse forms $u^\top A^{-1}u$,
+where $A$ is a positive definite matrix and $u$ a given vector. Our framework
+is built on Gauss-type quadrature and easily scales to large, sparse matrices.
+Further, it allows retrospective computation of lower and upper bounds on
+$u^\top A^{-1}u$, which in turn accelerates several algorithms. We prove that
+these bounds tighten iteratively and converge at a linear (geometric) rate. To
+our knowledge, ours is the first work to demonstrate these key properties of
+Gauss-type quadrature, which is a classical and deeply studied topic. We
+illustrate empirical consequences of our results by using quadrature to
+accelerate machine learning tasks involving determinantal point processes and
+submodular optimization, and observe tremendous speedups in several instances.
+
+Abstract: Precisely-labeled data sets with sufficient amount of samples are very
+important for training deep convolutional neural networks (CNNs). However, many
+of the available real-world data sets contain erroneously labeled samples and
+those errors substantially hinder the learning of very accurate CNN models. In
+this work, we consider the problem of training a deep CNN model for image
+classification with mislabeled training samples - an issue that is common in
+real image data sets with tags supplied by amateur users. To solve this
+problem, we propose an auxiliary image regularization technique, optimized by
+the stochastic Alternating Direction Method of Multipliers (ADMM) algorithm,
+that automatically exploits the mutual context information among training
+images and encourages the model to select reliable images to robustify the
+learning process. Comprehensive experiments on benchmark data sets clearly
+demonstrate our proposed regularized CNN model is resistant to label noise in
+training data.
+
+Abstract: Learning the distance metric between pairs of examples is of great importance
+for learning and visual recognition. With the remarkable success from the state
+of the art convolutional neural networks, recent works have shown promising
+results on discriminatively training the networks to learn semantic feature
+embeddings where similar examples are mapped close to each other and dissimilar
+examples are mapped farther apart. In this paper, we describe an algorithm for
+taking full advantage of the training batches in the neural network training by
+lifting the vector of pairwise distances within the batch to the matrix of
+pairwise distances. This step enables the algorithm to learn the state of the
+art feature embedding by optimizing a novel structured prediction objective on
+the lifted problem. Additionally, we collected Online Products dataset: 120k
+images of 23k classes of online products for metric learning. Our experiments
+on the CUB-200-2011, CARS196, and Online Products datasets demonstrate
+significant improvement over existing deep feature embedding methods on all
+experimented embedding sizes with the GoogLeNet network.
+
+Abstract: Recently, there has been rising interest in Bayesian optimization -- the
+optimization of an unknown function with assumptions usually expressed by a
+Gaussian Process (GP) prior. We study an optimization strategy that directly
+uses an estimate of the argmax of the function. This strategy offers both
+practical and theoretical advantages: no tradeoff parameter needs to be
+selected, and, moreover, we establish close connections to the popular GP-UCB
+and GP-PI strategies. Our approach can be understood as automatically and
+adaptively trading off exploration and exploitation in GP-UCB and GP-PI. We
+illustrate the effects of this adaptive tuning via bounds on the regret as well
+as an extensive empirical evaluation on robotics and vision tasks,
+demonstrating the robustness of this strategy for a range of performance
+criteria.
+
+Abstract: Determinantal Point Processes (DPPs) are elegant probabilistic models of
+repulsion and diversity over discrete sets of items. But their applicability to
+large sets is hindered by expensive cubic-complexity matrix operations for
+basic tasks such as sampling. In light of this, we propose a new method for
+approximate sampling from discrete $k$-DPPs. Our method takes advantage of the
+diversity property of subsets sampled from a DPP, and proceeds in two stages:
+first it constructs coresets for the ground set of items; thereafter, it
+efficiently samples subsets based on the constructed coresets. As opposed to
+previous approaches, our algorithm aims to minimize the total variation
+distance to the original distribution. Experiments on both synthetic and real
+datasets indicate that our sampling algorithm works efficiently on large data
+sets, and yields more accurate samples than previous approaches.
+
+Abstract: Energy minimization has been an intensely studied core problem in computer
+vision. With growing image sizes (2D and 3D), it is now highly desirable to run
+energy minimization algorithms in parallel. But many existing algorithms, in
+particular, some efficient combinatorial algorithms, are difficult to
+par-allelize. By exploiting results from convex and submodular theory, we
+reformulate the quadratic energy minimization problem as a total variation
+denoising problem, which, when viewed geometrically, enables the use of
+projection and reflection based convex methods. The resulting min-cut algorithm
+(and code) is conceptually very simple, and solves a sequence of TV denoising
+problems. We perform an extensive empirical evaluation comparing
+state-of-the-art combinatorial algorithms and convex optimization techniques.
+On small problems the iterative convex methods match the combinatorial max-flow
+algorithms, while on larger problems they offer other flexibility and important
+gains: (a) their memory footprint is small; (b) their straightforward
+parallelizability fits multi-core platforms; (c) they can easily be
+warm-started; and (d) they quickly reach approximately good solutions, thereby
+enabling faster "inexact" solutions. A key consequence of our approach based on
+submodularity and convexity is that it is allows to combine any arbitrary
+combinatorial or convex methods as subroutines, which allows one to obtain
+hybrid combinatorial and convex optimization algorithms that benefit from the
+strengths of both.
+
+Abstract: We introduce and study methods for inferring and learning from
+correspondences among neurons. The approach enables alignment of data from
+distinct multiunit studies of nervous systems. We show that the methods for
+inferring correspondences combine data effectively from cross-animal studies to
+make joint inferences about behavioral decision making that are not possible
+with the data from a single animal. We focus on data collection, machine
+learning, and prediction in the representative and long-studied invertebrate
+nervous system of the European medicinal leech. Acknowledging the computational
+intractability of the general problem of identifying correspondences among
+neurons, we introduce efficient computational procedures for matching neurons
+across animals. The methods include techniques that adjust for missing cells or
+additional cells in the different data sets that may reflect biological or
+experimental variation. The methods highlight the value harnessing inference
+and learning in new kinds of computational microscopes for multiunit
+neurobiological studies.
+
+Abstract: To cope with the high level of ambiguity faced in domains such as Computer
+Vision or Natural Language processing, robust prediction methods often search
+for a diverse set of high-quality candidate solutions or proposals. In
+structured prediction problems, this becomes a daunting task, as the solution
+space (image labelings, sentence parses, etc.) is exponentially large. We study
+greedy algorithms for finding a diverse subset of solutions in
+structured-output spaces by drawing new connections between submodular
+functions over combinatorial item sets and High-Order Potentials (HOPs) studied
+for graphical models. Specifically, we show via examples that when marginal
+gains of submodular diversity functions allow structured representations, this
+enables efficient (sub-linear time) approximate maximization by reducing the
+greedy augmentation step to inference in a factor graph with appropriately
+constructed HOPs. We discuss benefits, tradeoffs, and show that our
+constructions lead to significantly better proposals.
+
+Abstract: The increasing prominence of weakly labeled data nurtures a growing demand
+for object detection methods that can cope with minimal supervision. We propose
+an approach that automatically identifies discriminative configurations of
+visual patterns that are characteristic of a given object class. We formulate
+the problem as a constrained submodular optimization problem and demonstrate
+the benefits of the discovered configurations in remedying mislocalizations and
+finding informative positive and negative training examples. Together, these
+lead to state-of-the-art weakly-supervised detection results on the challenging
+PASCAL VOC dataset.
+
+Abstract: Submodular functions describe a variety of discrete problems in machine
+learning, signal processing, and computer vision. However, minimizing
+submodular functions poses a number of algorithmic challenges. Recent work
+introduced an easy-to-use, parallelizable algorithm for minimizing submodular
+functions that decompose as the sum of "simple" submodular functions.
+Empirically, this algorithm performs extremely well, but no theoretical
+analysis was given. In this paper, we show that the algorithm converges
+linearly, and we provide upper and lower bounds on the rate of convergence. Our
+proof relies on the geometry of submodular polyhedra and draws on results from
+spectral graph theory.
+
+Abstract: Learning to localize objects with minimal supervision is an important problem
+in computer vision, since large fully annotated datasets are extremely costly
+to obtain. In this paper, we propose a new method that achieves this goal with
+only image-level labels of whether the objects are present or not. Our approach
+combines a discriminative submodular cover problem for automatically
+discovering a set of positive object windows with a smoothed latent SVM
+formulation. The latter allows us to leverage efficient quasi-Newton
+optimization techniques. Our experiments demonstrate that the proposed approach
+provides a 50% relative improvement in mean average precision over the current
+state-of-the-art on PASCAL VOC 2007 detection.
